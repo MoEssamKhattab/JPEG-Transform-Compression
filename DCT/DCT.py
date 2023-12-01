@@ -1,7 +1,7 @@
 from .DCT_Basis import DCT_Basis
 import numpy as np
 
-def my_DCT(A):
+def DCT(A):
     """
     Return the DCT of a block
     :param A: numpy array of the block
