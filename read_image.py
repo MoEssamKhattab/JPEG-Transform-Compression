@@ -12,7 +12,7 @@ def read_image(image_path, N):
     # Load the image
     image = Image.open(image_path)
 
-    #image to grey scale
+    #image to gray scale
     image = image.convert('L')
 
     image_array = np.array(image)
