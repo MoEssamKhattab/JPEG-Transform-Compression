@@ -1,4 +1,4 @@
-# Another implementation of the 2d block into 1d array
+# Different implementation of the 2d block into 1d array
 
 import numpy as np
 
@@ -10,7 +10,6 @@ def zigzag_transform(block):
     """
     N = block.shape[0]
 
-    print(N)
 
     zigzag_indices = [(i,j) for i in range(N) for j in range(N)]
     zigzag_indices.sort(key = lambda x: (x[0]+ x[1], x[1]) if (x[0]+x[1])%2 == 0 else (x[0]+x[1], x[0]))
@@ -20,4 +19,4 @@ def zigzag_transform(block):
     for i,zigzag_index in enumerate(zigzag_indices):
         _1d_array[i] = block[zigzag_index[0], zigzag_index[1]]
 
-    return _1d_array, zigzag_indices
+    return _1d_array

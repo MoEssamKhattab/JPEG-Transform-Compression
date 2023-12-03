@@ -1,7 +1,7 @@
 import numpy as np
 from .get_quantization_table import get_quantization_table
 
-def quantize(block, CompressionMode):
+def quantizer(block, CompressionMode):
     """
     Quantize a block based on compression mode
     :param block: numpy array of block
