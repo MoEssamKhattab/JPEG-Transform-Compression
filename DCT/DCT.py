@@ -12,12 +12,12 @@ def DCT(A):
 
     for u in range(N):
         for v in range(N):
-            C[u,v] = sum(sum(np.multiply(A, DCT_Basis(u,v,N))))
-
+            C[u][v] = np.sum(np.multiply(A, DCT_Basis(u,v,N)))
+    
     #Normalization
     C = C/16
     C[0,:] = C[0,:]/2
     C[:,0] = C[:,0]/2
-    C = np.round(C)
+    #C = np.round(C)
     
     return C

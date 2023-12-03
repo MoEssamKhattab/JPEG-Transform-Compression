@@ -11,6 +11,6 @@ def DCT_Basis(u, v, N):
     b = np.zeros((N,N))
     for x in range(N):
         for y in range(N):
-            b[x,y] = np.cos((2*x + 1)*u*np.pi/(2*N)) * np.cos((2*y + 1)*v*np.pi/(2*N))
+            b[x][y] = np.cos(((2*x + 1)*u*np.pi)/(2*N)) * np.cos(((2*y + 1)*v*np.pi)/(2*N))
     
     return b
