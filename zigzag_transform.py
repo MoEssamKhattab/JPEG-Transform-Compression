@@ -15,7 +15,7 @@ def zigzag_transform(block):
 
     _1d_array = np.array(N*N)
 
-    for i in zigzag_indices:
-        _1d_array[1] = block[zigzag_indices[0], zigzag_indices[1]]
+    for i,zigzag_index in enumerate(zigzag_indices):
+        _1d_array[i] = block[zigzag_index[0], zigzag_index[1]]
 
     return _1d_array
