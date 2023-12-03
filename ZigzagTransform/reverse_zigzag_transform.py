@@ -1,3 +1,4 @@
+from .get_zigzag_indices import get_zigzag_indices
 import numpy as np
 
 def reverse_zigzag_transform(_1d_array, N):
@@ -7,8 +8,7 @@ def reverse_zigzag_transform(_1d_array, N):
     :param N: size of block
     :return: 2d block (N*N)
     """
-    zigzag_indices = [(i,j) for i in range(N) for j in range(N)]
-    zigzag_indices.sort(key = lambda x: (x[0]+ x[1], x[1]) if (x[0]+x[1])%2 == 0 else (x[0]+x[1], x[0]))
+    zigzag_indices = get_zigzag_indices(N)
 
     block = np.zeros((N,N))
 

@@ -1,5 +1,5 @@
 # Different implementation of the 2d block into 1d array
-
+from .get_zigzag_indices import get_zigzag_indices
 import numpy as np
 
 def zigzag_transform(block):
@@ -10,9 +10,7 @@ def zigzag_transform(block):
     """
     N = block.shape[0]
 
-
-    zigzag_indices = [(i,j) for i in range(N) for j in range(N)]
-    zigzag_indices.sort(key = lambda x: (x[0]+ x[1], x[1]) if (x[0]+x[1])%2 == 0 else (x[0]+x[1], x[0]))
+    zigzag_indices = get_zigzag_indices(N)
 
     _1d_array = np.zeros(N*N)
 
