@@ -10,12 +10,14 @@ def zigzag_transform(block):
     """
     N = block.shape[0]
 
-    zigzag_indices = [(i,j) for i in range(N) for j in range(N)]
-    zigzag_indices.sort(key = lambda x: (x[0], x[0]+x[1]) if (x[0]+x[1])%2 == 0 else (x[0]+x[1], x[1]))
+    print(N)
 
-    _1d_array = np.array(N*N)
+    zigzag_indices = [(i,j) for i in range(N) for j in range(N)]
+    zigzag_indices.sort(key = lambda x: (x[0]+ x[1], x[1]) if (x[0]+x[1])%2 == 0 else (x[0]+x[1], x[0]))
+
+    _1d_array = np.zeros(N*N)
 
     for i,zigzag_index in enumerate(zigzag_indices):
         _1d_array[i] = block[zigzag_index[0], zigzag_index[1]]
 
-    return _1d_array
+    return _1d_array, zigzag_indices
