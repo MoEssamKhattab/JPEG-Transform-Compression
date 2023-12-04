@@ -1,10 +1,10 @@
-from .DCT_Basis import DCT_Basis
 import numpy as np
 
-def DCT(A):
+def DCT(A, dct_basis):
     """
     Return the DCT of a block
     :param A: numpy array of the block
+    :param dct_basis: List of DCT Basis function
     :return: DCT of A
     """
     N = len(A)
@@ -12,7 +12,7 @@ def DCT(A):
 
     for u in range(N):
         for v in range(N):
-            C[u][v] = np.sum(np.multiply(A, DCT_Basis(u,v,N)))
+            C[u][v] = np.sum(np.multiply(A, dct_basis(u,v)))
     
     #Normalization
     C = C/16

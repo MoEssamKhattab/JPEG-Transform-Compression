@@ -1,10 +1,11 @@
 from .IDCT_Basis import IDCT_Basis
 import numpy as np
 
-def IDCT(C):
+def IDCT(C, idct_basis):
     """
     Return the IDCT of a block
     :param C: numpy array of the block
+    :param idct_basis: List of IDCT Basis function
     :return: IDCT of C
     """
     N = len(C)
@@ -12,6 +13,7 @@ def IDCT(C):
 
     for x in range(N):
         for y in range(N):
-            basis = IDCT_Basis(x,y,N)
+            basis = idct_basis(x,y)
             A[x][y] = np.sum(np.multiply(C, basis))
+    
     return np.round(A)
