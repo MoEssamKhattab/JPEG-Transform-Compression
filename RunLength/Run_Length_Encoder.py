@@ -27,4 +27,6 @@ def run_length_encoder(image):
                 encoded = np.append(encoded, zeros_count)
                 zeros_count = 0
             encoded = np.append(encoded, image[i])
+    if zeros_count != 0:
+        encoded = np.append(encoded,zeros_count)
     return encoded

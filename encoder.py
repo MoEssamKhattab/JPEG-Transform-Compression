@@ -46,9 +46,10 @@ def encoder(image_array, N, CompressionMode):
     
     # [5] apply run-length encoding to each block
     run_length_encoded_blocks = np.array([])
-    
+    sz = 0
     for i in range(total_no_blocks):
-            run_length_encoded_blocks = np.append(run_length_encoded_blocks, run_length_encoder(_1D_blocks[i]))
+            _1D_block = run_length_encoder(_1D_blocks[i])
+            run_length_encoded_blocks = np.append(run_length_encoded_blocks, _1D_block)
 
     # [6] apply Entropy encoding to each block
     encoded_data, huffman_tree = huffman_encode(run_length_encoded_blocks)

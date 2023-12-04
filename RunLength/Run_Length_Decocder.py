@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def run_length_decoder(encoded):
+def run_length_decoder(encoded,no_vertical_blocks,no_horizontal_blocks,N):
     """
     Run-Length Decoder for binary image decompression.
 
@@ -14,14 +14,19 @@ def run_length_decoder(encoded):
     Description:
     This function takes an encoded array, produced by a run-length encoder, and performs run-length decoding.
     """
+    total_image_length = N*N*no_horizontal_blocks*no_vertical_blocks
+
     encoded_len = encoded.shape
-    image = np.array([])
+    image = np.zeros(total_image_length)
+    idx = 0
     for i in range(encoded_len[0]):
         if encoded[i - 1] == 0:
             continue
         if encoded[i] == 0:
-            zeros = np.zeros(int(encoded[i + 1]))
-            image = np.append(image, zeros)
+            for j in range(int(encoded[i+1])):
+                image[idx] = 0
+                idx += 1
         else:
-            image = np.append(image, encoded[i])
+            image[idx] = encoded[i]
+            idx += 1
     return image
