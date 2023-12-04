@@ -40,18 +40,19 @@ def encoder(image_array, N, CompressionMode):
     idx = 0
     for i in range(no_vertical_blocks):
         for j in range(no_horizontal_blocks):
-                block = quantized_blocks[i][j]
                 _1D_blocks[idx] = zigzag_transform(quantized_blocks[i][j])
                 idx += 1
     
-    # [5] apply run-length encoding to each block
-    run_length_encoded_blocks = np.array([])
-    sz = 0
-    for i in range(total_no_blocks):
-            _1D_block = run_length_encoder(_1D_blocks[i])
-            run_length_encoded_blocks = np.append(run_length_encoded_blocks, _1D_block)
+    # # [5] apply run-length encoding to each block
+    # run_length_encoded_blocks = np.array([])
 
-    # [6] apply Entropy encoding to each block
-    encoded_data, huffman_tree = huffman_encode(run_length_encoded_blocks)
+    # for i in range(total_no_blocks):
+    #         _1D_block = run_length_encoder(_1D_blocks[i])
+    #         run_length_encoded_blocks = np.append(run_length_encoded_blocks, _1D_block)
+
+    # # [6] apply Entropy encoding to each block
+    # encoded_data, huffman_tree = huffman_encode(run_length_encoded_blocks)
     
-    return encoded_data, huffman_tree, no_vertical_blocks, no_horizontal_blocks
+    # return encoded_data, huffman_tree, no_vertical_blocks, no_horizontal_blocks
+    
+    return _1D_blocks, None, no_vertical_blocks, no_horizontal_blocks

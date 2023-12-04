@@ -9,26 +9,25 @@ from Blockify.deblockify_image import deblockify_image
 
 def decoder(encoded_image,N,CompressionMode, HoriziontalPadding, VerticalPadding, HuffmanTree, no_vertical_blocks,no_horizontal_blocks):
 
-    # [1] apply Entropy decoding to encoded image
-    entropy_decoded_image = np.array(huffman_decode(encoded_image,HuffmanTree))
+    # # [1] apply Entropy decoding to encoded image
+    # entropy_decoded_image = np.array(huffman_decode(encoded_image,HuffmanTree))
     
-    # [2] apply run-length decoding
-    runlength_decoded_image = run_length_decoder(entropy_decoded_image, no_vertical_blocks, no_horizontal_blocks, N)
+    # # [2] apply run-length decoding
+    # runlength_decoded_image = run_length_decoder(entropy_decoded_image, no_vertical_blocks, no_horizontal_blocks, N)
     
     # [3] apply reverse zigzag transform (1D to 2D)
     
+    runlength_decoded_image = encoded_image
+
     blocks = np.zeros((no_vertical_blocks, no_horizontal_blocks ,N,N))
     
-    runlength_decoded_size = runlength_decoded_image.shape[0]
-
     # image_total_pixels = no_vertical_blocks*no_horizontal_blocks*N*N
 
     index = 0
     for i in range(no_vertical_blocks):
         for j in range(no_horizontal_blocks):
             block = runlength_decoded_image[index:index+N*N]
-            block = block.reshape((N, N))
-            blocks[i][j] = block
+            blocks[i][j] = block.reshape((N, N))
             index += N*N
 
     # [4] apply dequantization to each block

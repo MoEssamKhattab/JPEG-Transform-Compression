@@ -18,6 +18,6 @@ def DCT(A, dct_basis):
     C = C/16
     C[0,:] = C[0,:]/2
     C[:,0] = C[:,0]/2
-    C = np.round(C)
+    #C = np.round(C)
     
     return C
