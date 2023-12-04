@@ -43,7 +43,7 @@ def encoder(image_array, N, CompressionMode):
                 _1D_blocks[idx] = zigzag_transform(quantized_blocks[i][j])
                 idx += 1
     
-    # # [5] apply run-length encoding to each block
+    # [5] apply run-length encoding to each block
     # run_length_encoded_blocks = np.array([])
 
     # for i in range(total_no_blocks):
