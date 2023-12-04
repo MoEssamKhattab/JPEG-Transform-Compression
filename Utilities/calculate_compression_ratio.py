@@ -10,7 +10,7 @@ def calculate_comprrssion_ratio(original_image_array, entropy_encoder_output):
     original_size = 0       # in bits
     for i in range(0, len(original_image_array)):
         for j in range(0, len(original_image_array[0])):
-            bits += len(bin(original_image_array[i][j])[2:])     # [2:] to remove the '0b' prefix
+            original_size += len(bin(int(original_image_array[i][j]))[2:])     # [2:] to remove the '0b' prefix
     
     # count the number of bits for the entropy encoder output
     compressed_size = len(entropy_encoder_output)     # in bits
