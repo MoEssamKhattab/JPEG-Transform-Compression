@@ -10,22 +10,24 @@ def main():
     image_path = "./palestine.jpg"
     image_array, padding_length, padding_width = read_image(image_path, N)
     
-    compression_mode = CompressionMode.HIGH
+    compression_mode = CompressionMode.LOW
     encoded_data, huffman_tree, no_vertical_blocks ,no_horizontal_blocks = encoder(image_array, N, compression_mode)
 
    # print(encoded_data)
 
     decoded_image = decoder(encoded_data,N,compression_mode,padding_length,padding_width,huffman_tree,no_vertical_blocks,no_horizontal_blocks)
 
+    print(np.min(decoded_image))
+
     compression_ratio = calculate_comprrssion_ratio(image_array,encoded_data)
     print(compression_ratio)
     
-    
-    from PIL import Image
+    import matplotlib.pyplot as plt
 
-    image = Image.fromarray(decoded_image, mode='L')
+    plt.imshow(decoded_image, cmap='gray')
+    plt.show()
 
-    image.save('grayscale_image.png')
+
 
 
 
