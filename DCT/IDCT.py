@@ -13,7 +13,7 @@ def IDCT(C, idct_basis):
 
     for x in range(N):
         for y in range(N):
-            basis = idct_basis(x,y)
+            basis = idct_basis[x][y]
             A[x][y] = np.sum(np.multiply(C, basis))
     
     return np.round(A)
