@@ -1,19 +1,16 @@
 from DCT.DCT import DCT
 from DCT.IDCT import IDCT
+from read_image import read_image
 import numpy as np
 
+def main():
+    N = 8
+    image_array, padding_length, padding_width = read_image("./palestine.jpg", N)
+    
+    
+    
+
+
+
 if __name__ == "__main__":
-
-    A = np.array([[231, 224, 224, 217, 217, 203, 189, 196],
-                [210, 217, 203, 189, 203, 224, 217, 224],
-                [196, 217, 210, 224, 203, 203, 196, 189],
-                [210, 203, 196, 203, 182, 203, 182, 189],
-                [203, 224, 203, 217, 196, 175, 154, 140],
-                [182, 189, 168, 161, 154, 126, 119, 112],
-                [175, 154, 126, 105, 140, 105, 119,  84],
-                [154,  98, 105,  98, 105,  63, 112,  84]])
-
-    C = DCT(A)
-    print(C)
-    C = IDCT(C)
-    print(C)
+    main()
