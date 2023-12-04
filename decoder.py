@@ -13,7 +13,7 @@ def decoder(encoded_image,N,CompressionMode, HoriziontalPadding, VerticalPadding
     entropy_decoded_image = np.array(huffman_decode(encoded_image,HuffmanTree))
     
     # # [2] apply run-length decoding
-    runlength_decoded_image = run_length_decoder(encoded_image, no_vertical_blocks, no_horizontal_blocks, N)
+    runlength_decoded_image = run_length_decoder(entropy_decoded_image, no_vertical_blocks, no_horizontal_blocks, N)
     
     # [3] apply reverse zigzag transform (1D to 2D)
     zigzag_transformed_image = np.zeros((no_vertical_blocks,no_horizontal_blocks,N,N))

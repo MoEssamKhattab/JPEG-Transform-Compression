@@ -10,7 +10,7 @@ def main():
 
     # ==================== Read Image =======================
     N = 8
-    image_path = "./Mona_Lisa.jpg"
+    image_path = "./palestine.jpg"
     image_array, padding_length, padding_width = read_image(image_path, N)
 
     print(image_array.shape)

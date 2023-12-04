@@ -54,4 +54,4 @@ def encoder(image_array, N, CompressionMode):
     encoded_data, huffman_tree = huffman_encode(run_length_encoded_blocks)
     
     # return encoded_data, huffman_tree, no_vertical_blocks, no_horizontal_blocks
-    return run_length_encoded_blocks, huffman_tree, no_vertical_blocks, no_horizontal_blocks
+    return encoded_data, huffman_tree, no_vertical_blocks, no_horizontal_blocks
