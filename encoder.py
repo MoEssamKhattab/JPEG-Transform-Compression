@@ -15,7 +15,7 @@ def encoder(image_array, N, CompressionMode):
     no_horizontal_blocks = len(blocks[0])
     
     # [2] apply DCT to each block
-    dct_basis = np.zeros((N,N))
+    dct_basis = np.zeros((N,N,N,N))
 
     for u in range(N):
         for v in range(N):
@@ -46,7 +46,7 @@ def encoder(image_array, N, CompressionMode):
     run_length_encoded_blocks = np.array([])
     
     for i in range(len(_1D_blocks)):
-        run_length_encoded_blocks = np.append(run_length_encoded_blocks, run_length_encoder(_1D_blocks(i)))
+        run_length_encoded_blocks = np.append(run_length_encoded_blocks, run_length_encoder(_1D_blocks[i]))
 
     # [6] apply Entropy encoding to each block
     run_length_encoded_blocks = run_length_encoded_blocks.reshape(1, -1).squeeze()

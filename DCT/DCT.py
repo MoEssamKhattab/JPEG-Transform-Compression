@@ -12,7 +12,7 @@ def DCT(A, dct_basis):
 
     for u in range(N):
         for v in range(N):
-            C[u][v] = np.sum(np.multiply(A, dct_basis(u,v)))
+            C[u][v] = np.sum(np.multiply(A, dct_basis[u,v]))
     
     #Normalization
     C = C/16
