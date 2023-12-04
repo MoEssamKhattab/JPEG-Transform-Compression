@@ -8,7 +8,7 @@ def main():
     image_path = "./palestine.jpg"
     image_array, padding_length, padding_width = read_image(image_path, N)
     
-    compression_mode = CompressionMode.High
+    compression_mode = CompressionMode.HIGH
     encoded_data, huffman_tree = encoder(image_array, N, compression_mode)
 
     print(encoded_data)
