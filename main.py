@@ -1,28 +1,17 @@
-from DCT.DCT import DCT
-from DCT.IDCT import IDCT
-from read_image import read_image
-from Blockify.blockify_image import blockify_image
-from Blockify.deblockify_image import deblockify_image
-
+from Utilities.read_image import read_image
+from DEFS import CompressionMode
+from encoder import encoder
 import numpy as np
 
 def main():
-    N = 2
-    A = np.array([[1, 2, 3, 4, 5, 6, 7, 8], 
-                    [9, 10, 11, 12, 13, 14, 15, 16],
-                    [17, 18, 19, 20, 21, 22, 23, 24],
-                    [25, 26, 27, 28, 29, 30, 31, 32],
-                    [33, 34, 35, 36, 37, 38, 39, 40],
-                    [41, 42, 43, 44, 45, 46, 47, 48],
-                    [49, 50, 51, 52, 53, 54, 55, 56],
-                    [57, 58, 59, 60, 61, 62, 63, 64]])
-    B = blockify_image(A, N)
-    print(B)
-
-    C = deblockify_image(B)
-    print(C)
+    N = 8
+    image_path = "./palestine.jpg"
+    image_array, padding_length, padding_width = read_image(image_path, N)
     
+    compression_mode = CompressionMode.High
+    encoded_data, huffman_tree = encoder(image_array, N, compression_mode)
 
+    print(encoded_data)
 
 
 if __name__ == "__main__":

@@ -39,6 +39,3 @@ def get_diagonal(current_mode, block, i):
         for j in range(i + 1):
             diagonal = np.append(diagonal, block[j][i - j])
     return diagonal
-
-
-print(block_to_1d(np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]])))

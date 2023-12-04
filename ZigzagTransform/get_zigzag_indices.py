@@ -1,6 +1,6 @@
 import numpy as np
 
-def get_zigzag_transform(N):
+def get_zigzag_indices(N):
     """
     Return the zigzag transform for a block of size N*N
     :param N: size of block (N*N)

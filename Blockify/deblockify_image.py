@@ -6,7 +6,7 @@ def deblockify_image(blocks):
     :param blocks: list of blocks
     :return: image array
     """
-    N = len(blocks[0][0])   # block size
+    N = len(blocks[0][0])               # block size
     image_length = len(blocks) * N      # number of vertical blocks * block size
     image_width = len(blocks[0]) * N    # number of horizontal blocks * block size
 

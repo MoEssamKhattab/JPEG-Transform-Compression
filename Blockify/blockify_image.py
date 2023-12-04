@@ -10,8 +10,4 @@ def blockify_image(image_array, N):
     blocks = image_array.reshape(img_lenght // N, N, img_width // N, N)
     blocks = blocks.swapaxes(1, 2)
 
-    # blocks = []
-    # for i in range(0, img_lenght, N):
-    #     for j in range(0, img_width, N):
-    #         blocks.append(image_array[i:i + N, j:j + N])
     return blocks
