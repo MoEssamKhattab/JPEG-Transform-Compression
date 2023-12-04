@@ -2,19 +2,29 @@ import numpy as np
 
 
 def run_length_encoder(image):
-    zeroscount = 0
-    len = image.shape
-    encoded = np.array([])
-    for i in range(len[0]):
-        if image[i] == 0:
-            if zeroscount == 0:
-                encoded = np.append(encoded,0)
-            zeroscount += 1
-        else:
-            if zeroscount != 0:
-                encoded = np.append(encoded, zeroscount)
-                zeroscount = 0
-            encoded = np.append(encoded,image[i])
-    return encoded
+    """
+    Run-Length Encoder for binary image compression.
 
-print(run_length_encoder(np.array([1,2,3,0,0,0,0,1,0,1,9,0,0,9])))
+    Parameters:
+    - image (numpy.ndarray): Input binary image represented as a NumPy array.
+
+    Returns:
+    - numpy.ndarray: Encoded array containing alternating counts of consecutive zeros and non-zero values.
+
+    Description:
+    This function takes a binary image represented as a NumPy array and performs run-length encoding on it.
+    """
+    zeros_count = 0
+    length = image.shape
+    encoded = np.array([])
+    for i in range(length[0]):
+        if image[i] == 0:
+            if zeros_count == 0:
+                encoded = np.append(encoded, 0)
+            zeros_count += 1
+        else:
+            if zeros_count != 0:
+                encoded = np.append(encoded, zeros_count)
+                zeros_count = 0
+            encoded = np.append(encoded, image[i])
+    return encoded

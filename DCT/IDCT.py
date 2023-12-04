@@ -1,4 +1,4 @@
-from .DCT_Basis import DCT_Basis
+from .IDCT_Basis import IDCT_Basis
 import numpy as np
 
 def IDCT(C):
@@ -12,12 +12,6 @@ def IDCT(C):
 
     for x in range(N):
         for y in range(N):
-            A[x][y] = np.sum(np.multiply(C, DCT_Basis(x,y,N)))
-    
-    #Denormalization
-    A = A*16
-    A[0,:] = A[0,:]/2
-    A[:,0] = A[:,0]/2
-    #A = np.round(A)
-    
-    return A
+            basis = IDCT_Basis(x,y,N)
+            A[x][y] = np.sum(np.multiply(C, basis))
+    return np.round(A)

@@ -1,3 +1,4 @@
+from HuffmanCode.huffman_decode import huffman_decode
 from build_huffman import build_huffman_tree, generate_huffman_codes
 from collections import defaultdict, Counter  # Import defaultdict and Counter for convenient data structures
 
@@ -14,11 +15,11 @@ def huffman_encode(data):
 
 
 
-# # Example usage
-# input_array = ['A', 'B', 'A', 'C', 'B', 'A', 'A']
-# encoded_data, huffman_tree = huffman_encode(input_array)
-# # decoded_data = huffman_decode(encoded_data, huffman_tree)
+## Example usage
+input_array = ['A', 'B', 'A', 'C', 'B', 'A', 'A']
+encoded_data, huffman_tree = huffman_encode(input_array)
+decoded_data = huffman_decode(encoded_data, huffman_tree)
 
-# print("Original Data:", input_array)
-# print("Encoded Data:", encoded_data)
-# # print("Decoded Data:", decoded_data)
+print("Original Data:", input_array)
+print("Encoded Data:", encoded_data)
+print("Decoded Data:", decoded_data)

@@ -1,4 +1,5 @@
-from DCT.DCT import DCT 
+from DCT.DCT import DCT
+from DCT.IDCT import IDCT
 import numpy as np
 
 if __name__ == "__main__":
@@ -13,5 +14,6 @@ if __name__ == "__main__":
                 [154,  98, 105,  98, 105,  63, 112,  84]])
 
     C = DCT(A)
-
+    print(C)
+    C = IDCT(C)
     print(C)
