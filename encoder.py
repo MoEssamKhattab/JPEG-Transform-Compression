@@ -8,7 +8,13 @@ from RunLength.Run_Length_Encoder import run_length_encoder
 from HuffmanCode.huffman_encode import huffman_encode
 
 def encoder(image_array, N, CompressionMode):
-
+    """
+    Encode the image
+    :param image_array: image array
+    :param N: block size (N*N)
+    :param CompressionMode: Compression mode (HIGH, LOW)
+    :return: encoded image, huffman tree, number of vertical blocks, number of horizontal blocks
+    """
     # [1] blockify the image
     blocks = blockify_image(image_array, N)
     no_vertical_blocks = len(blocks)
@@ -47,8 +53,8 @@ def encoder(image_array, N, CompressionMode):
     run_length_encoded_blocks = np.array([])
 
     for i in range(total_no_blocks):
-         _1D_block = run_length_encoder(_1D_blocks[i])
-         run_length_encoded_blocks = np.append(run_length_encoded_blocks, _1D_block)
+        _1D_block = run_length_encoder(_1D_blocks[i])
+        run_length_encoded_blocks = np.append(run_length_encoded_blocks, _1D_block)
 
     # # [6] apply Entropy encoding to each block
     encoded_data, huffman_tree = huffman_encode(run_length_encoded_blocks)

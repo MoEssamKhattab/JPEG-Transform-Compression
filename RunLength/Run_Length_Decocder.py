@@ -3,16 +3,12 @@ import numpy as np
 
 def run_length_decoder(encoded,no_vertical_blocks,no_horizontal_blocks,N):
     """
-    Run-Length Decoder for binary image decompression.
-
-    Parameters:
-    - encoded (numpy.ndarray): Input array containing alternating counts of consecutive zeros and non-zero values.
-
-    Returns:
-    - image (numpy.ndarray): Decoded binary image represented as a NumPy array.
-
-    Description:
-    This function takes an encoded array, produced by a run-length encoder, and performs run-length decoding.
+    Decode the encoded image
+    :param encoded: encoded image
+    :param no_vertical_blocks: Number of vertical blocks
+    :param no_horizontal_blocks: Number of horizontal blocks
+    :param N: block size (N*N)
+    :return: decoded image
     """
     total_image_length = N*N*no_horizontal_blocks*no_vertical_blocks
 

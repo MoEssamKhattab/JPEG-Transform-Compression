@@ -1,4 +1,5 @@
 from PIL import Image
+from Utilities.save_image import save_image
 import numpy as np
 
 def read_image(image_path, N):
@@ -18,6 +19,9 @@ def read_image(image_path, N):
     image_array = np.array(image)
 
     img_lenght, img_width = image_array.shape
+
+    # save gray scale image
+    save_image(image_array, None)
 
     padding_length = 0
     padding_width = 0

@@ -7,16 +7,27 @@ from DCT.IDCT import IDCT
 from DCT.IDCT_Basis import IDCT_Basis
 from Blockify.deblockify_image import deblockify_image
 
-def decoder(encoded_image,N,CompressionMode, HoriziontalPadding, VerticalPadding, HuffmanTree, no_vertical_blocks,no_horizontal_blocks):
-
-    # # [1] apply Entropy decoding to encoded image
+def decoder(encoded_image, N, CompressionMode, VerticalPadding, HoriziontalPadding, HuffmanTree, no_vertical_blocks,no_horizontal_blocks):
+    """
+    Decode the encoded image
+    :param encoded_image: encoded image
+    :param N: block size (N*N)
+    :param CompressionMode: Compression mode (HIGH, LOW)
+    :param VerticalPadding: Vertical padding length
+    :param HoriziontalPadding: Horizontal padding length
+    :param HuffmanTree: Huffman tree used for encoding
+    :param no_vertical_blocks: Number of vertical blocks
+    :param no_horizontal_blocks: Number of horizontal blocks
+    :return: decoded image
+    """
+    # [1] apply Entropy decoding to encoded image
     entropy_decoded_image = np.array(huffman_decode(encoded_image,HuffmanTree))
     
-    # # [2] apply run-length decoding
+    # [2] apply run-length decoding
     runlength_decoded_image = run_length_decoder(entropy_decoded_image, no_vertical_blocks, no_horizontal_blocks, N)
     
     # [3] apply reverse zigzag transform (1D to 2D)
-    zigzag_transformed_image = np.zeros((no_vertical_blocks,no_horizontal_blocks,N,N))
+    #zigzag_transformed_image = np.zeros((no_vertical_blocks,no_horizontal_blocks,N,N))
     blocks = np.zeros((no_vertical_blocks, no_horizontal_blocks ,N,N))
 
     # image_total_pixels = no_vertical_blocks*no_horizontal_blocks*N*N
@@ -50,4 +61,5 @@ def decoder(encoded_image,N,CompressionMode, HoriziontalPadding, VerticalPadding
             idct_blocks[i][j] = IDCT(dequantized_blocks[i][j], idct_basis)
 
     # [6] deblockify the image
-    return deblockify_image(idct_blocks)
+    decoded_image = deblockify_image(idct_blocks)
+    return decoded_image[:decoded_image.shape[0] - VerticalPadding, :decoded_image.shape[1] - HoriziontalPadding]
