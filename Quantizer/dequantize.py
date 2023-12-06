@@ -8,4 +8,4 @@ def dequantize(block, CompressionMode):
     :param CompressionMode: enum class
     :return: dequantized block
     """
-    return np.round(np.divide(block, get_quantization_table(CompressionMode)))
+    return np.round(np.multiply(block, get_quantization_table(CompressionMode)))

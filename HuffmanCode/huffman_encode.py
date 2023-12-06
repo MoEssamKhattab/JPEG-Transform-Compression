@@ -10,6 +10,3 @@ def huffman_encode(data):
 
     encoded_data = "".join(codes[symbol] for symbol in data)  # Encode the input data using Huffman codes
     return encoded_data, root  # Return the encoded data and the Huffman tree root
-
-
-

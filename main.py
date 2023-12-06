@@ -25,13 +25,12 @@ def main():
     compression_ratio = calculate_comprrssion_ratio(image_array,encoded_data)
     print(f"Compression ratio: {compression_ratio}:1")
 
-    # ==================== Restore Image =======================
+    # ==================== Show and Save Image =======================
     # save the decoded image as jpg
-    save_image(decoded_image, compression_mode.name)
+    
+    original_image = image_array[:decoded_image.shape[0] - vertical_padding, :decoded_image.shape[1] - horizontal_padding]
+    save_image(original_image, decoded_image, compression_ratio, compression_mode)
 
-    # Show the image
-    plt.imshow(decoded_image, cmap='gray')
-    plt.show()
 
 if __name__ == "__main__":
     main()

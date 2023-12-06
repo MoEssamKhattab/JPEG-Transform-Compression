@@ -20,9 +20,6 @@ def read_image(image_path, N):
 
     img_lenght, img_width = image_array.shape
 
-    # save gray scale image
-    save_image(image_array, None)
-
     padding_length = 0
     padding_width = 0
 
